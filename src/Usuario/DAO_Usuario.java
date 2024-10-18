@@ -8,11 +8,9 @@ import java.sql.Statement;
 
 public class DAO_Usuario {
     private Connection conexion;
-    JDBC jdbc = new JDBC();
 
-    public DAO_Usuario() throws SQLException {
+    public DAO_Usuario(JDBC jdbc) throws SQLException {
         conexion = jdbc.getConextion();
-        crearTabla();
     }
 
 

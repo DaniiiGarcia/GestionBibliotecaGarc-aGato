@@ -17,6 +17,11 @@ public class JDBC {
         conectarBD();
         crearBD();
         useDB();
+        crearTablaAutor();
+        crearTablaLibro();
+        crearTablaUsuario();
+        crearTablaPrestamo();
+        crearTablaLibro_Autor();
     }
 
     public void useDB() {
