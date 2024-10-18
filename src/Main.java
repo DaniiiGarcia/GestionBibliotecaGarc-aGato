@@ -11,6 +11,5 @@ public class Main {
         DAO_Usuario daoUsuario = new DAO_Usuario();
         DAO_Autor daoAutor = new DAO_Autor();
 
-
     }
 }

@@ -10,7 +10,7 @@ public class DAO_Autor {
 
     private Connection conexion;
     JDBC jdbc = new JDBC();
-    public DAO_Autor(Connection conexion) throws SQLException {
+    public DAO_Autor() throws SQLException {
         conexion = jdbc.getConextion();
         create();
     }
