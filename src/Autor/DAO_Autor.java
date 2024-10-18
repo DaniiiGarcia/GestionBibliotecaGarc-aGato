@@ -11,12 +11,12 @@ import java.util.Scanner;
 public class DAO_Autor {
 
     private Connection conexion;
-    JDBC jdbc = new JDBC();
-    public DAO_Autor() throws SQLException {
+
+    public DAO_Autor(JDBC jdbc) throws SQLException {
         conexion = jdbc.getConextion();
-        createAutor();
+       // createAutor();
         insert();
-        addAutor(1, "Daniel");
+        //addAutor(1, "Daniel");
 
 
 
