@@ -26,7 +26,7 @@ public class DAO_Autor {
         try (Statement s = conexion.createStatement()){
 
             s.executeUpdate(CREATE_AUTOR);
-            System.out.println("Tabla usuario creada correctamente");
+            System.out.println("Tabla Autor creada correctamente");
 
         } catch (SQLException e) {
             System.out.println("Error al crear la tabla del usuario");
