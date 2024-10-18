@@ -9,17 +9,12 @@ public class JDBC {
     private final String user = "root";
     private final String pasw="210205";
 
-    //Para mariadb
-    private final String url1 = "jdbc:mariadb://localhost/";
-    private final String user1 = "root";
-    private final String pasw1="hoola";
-
     //BBDD biblioteca
     private final String bd = "Biblioteca";
     Connection conextion;
     public JDBC() throws SQLException {
         conectarBD();
-        //crearBD();
+        crearBD();
     }
 
     public Connection getConextion() {
