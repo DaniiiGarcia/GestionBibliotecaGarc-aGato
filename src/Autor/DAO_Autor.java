@@ -14,12 +14,9 @@ public class DAO_Autor {
     JDBC jdbc = new JDBC();
     public DAO_Autor() throws SQLException {
         conexion = jdbc.getConextion();
-        createAutor();
+        //createAutor();
         insert();
         addAutor(1, "Daniel");
-
-
-
     }
 
     public void createAutor(){
@@ -33,10 +30,9 @@ public class DAO_Autor {
         try (Statement s = conexion.createStatement()){
 
             s.executeUpdate(CREATE_AUTOR);
-            System.out.println("Tabla Autor creada correctamente");
 
         } catch (SQLException e) {
-            System.out.println("Error al crear la tabla del usuario");
+            System.out.println("Error al insertar datos en la tabla Autor");
         }
     }
 
