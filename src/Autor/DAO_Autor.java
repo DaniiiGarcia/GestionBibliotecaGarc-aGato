@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
+
 
 public class DAO_Autor {
     Connection conexion;
@@ -31,26 +31,47 @@ public class DAO_Autor {
 
         try (Statement s = conexion.createStatement()) {
             s.executeUpdate(insert);
-            System.out.println("Tabla Autor creada con exito");
+            System.out.println("Autores insertados correctamente");
 
         } catch (SQLException e) {
-            System.out.println("Error al crear la tabla Autor");
+            System.out.println("Error al insertar los datos de autor");
         }
     }
 
-    public void addAutor(Integer id, String Nombre) {
+    public void añadirAutor(Integer id, String Nombre) {
         String add = "INSERT INTO Autor values(?,?)";
 
         try (PreparedStatement ps = conexion.prepareStatement(add)) {
-
-            System.out.println("Introduzca un nombre");
             ps.setInt(1, id);
             ps.setString(2, Nombre);
             ps.executeUpdate();
             System.out.println("Autor creado con exito");
-
         } catch (SQLException e) {
-            System.out.println("Error al crear la tabla Autor");
+            System.out.println("Error al añadir el Autor");
+        }
+    }
+
+    public void eliminarAutor(Integer id) {
+        String del = "DELETE FROM Autor WHERE id = ?";
+
+        try (PreparedStatement ps = conexion.prepareStatement(del)) {
+            ps.setInt(1, id);
+            ps.execute();
+            System.out.println("Autor eliminado con exito");
+        } catch (SQLException e) {
+            System.out.println("Error al borrar el autor");
+        }
+    }
+
+
+    public void modificarAutor(Integer id, Integer opcion, String nombre) {
+        String mod = "UPDATE Autor SET nombre = ? WHERE id = ?";
+        try (PreparedStatement ps = conexion.prepareStatement(mod)) {
+            ps.setString(1, nombre);
+            ps.execute();
+            System.out.println("Autor modificado con exito");
+        } catch (SQLException e) {
+            System.out.println("Error al modificar el autor");
         }
     }
 }
