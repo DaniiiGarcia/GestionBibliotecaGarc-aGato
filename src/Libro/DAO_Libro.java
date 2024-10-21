@@ -43,7 +43,7 @@ public class DAO_Libro {
 
         try (PreparedStatement ps = conexion.prepareStatement(add)) {
 
-            ps.setInt(1,id);
+            ps.setInt(1, id);
             ps.setString(2, titulo);
             ps.setString(3, ISBN);
             ps.executeUpdate();
@@ -67,60 +67,33 @@ public class DAO_Libro {
     }
 
 
-    public void modificarLibro(Integer id) {
-        String modTitulo = "UPDATE Libro SET titulo = ? WHERE id = ?";
-        String modISBN = "UPDATE Libro SET isbn = ? WHERE id = ?";
-        Scanner s = new Scanner(System.in);
-        Integer decision;
-        String tituloIntroducido;
-        Integer idIntroducido;
-        String isbnIntroducido;
+    //Revisar
+    public void modificarLibro(Integer id, Integer opcion, String nuevoValor) {
+        String mod = "";
+        try (PreparedStatement ps = conexion.prepareStatement(mod)) {
+            switch (opcion) {
+                case 1:
+                    //CAMBIAR LA FECHA DE INICIO
+                    mod = "UPDATE Libro SET titulo = ? WHERE id = ?";
+                    //PONER FORMATO PARA FECHAS!
+                    ps.setString(1, nuevoValor);
+                    ps.setInt(2, id);
+                    break;
+                case 2:
+                    //CAMBIAR LA FECHA DE FIN
+                    mod = "UPDATE Libro SET isbn = ? WHERE id = ?";
+                    //PONER FORMATO PARA FECHAS!
+                    ps.setString(1, nuevoValor);
+                    ps.setInt(2, id);
 
-            System.out.println("""
-                    ¿Qué desea hacer? 
-                        1. Modificar el Título del libro 
-                        2. Modificar el ISBN del libro 
-                    """);
+                    break;
 
-                    decision = s.nextInt();
-
-                    switch (decision){
-                        case 1:
-                            try(PreparedStatement ps = conexion.prepareStatement(modTitulo)){
-                                System.out.println("Introduzca el nombre del libro a modificar");
-                                tituloIntroducido = s.next();
-
-                                System.out.println("Introduzca el id del libro a modificar");
-                                idIntroducido = s.nextInt();
-                                ps.setString(1, tituloIntroducido);
-                                ps.setInt(2, idIntroducido);
-
-                                ps.execute();
-                                System.out.println("Libro con id "+ id +" modificadao correctamente");
-                            } catch (SQLException e) {
-                                System.out.println("Error al modificar el libro");
-                            }
-                            break;
-
-                        case 2:
-                            try(PreparedStatement ps = conexion.prepareStatement(modISBN)){
-                                System.out.println("Introduzca el isbn del libro a modificar");
-                                isbnIntroducido = s.next();
-
-                                System.out.println("Introduzca el id del libro a modificar");
-                                idIntroducido = s.nextInt();
-                                ps.setString(1, isbnIntroducido);
-                                ps.setInt(2, idIntroducido);
-
-                                ps.execute();
-                                System.out.println("Libro con id "+ id +" modificadao correctamente");
-
-                            } catch (SQLException e) {
-                                System.out.println("Error al modificar el libro");
-                            }
-                            break;
-                    }
+            }
+            ps.executeUpdate();
+            System.out.println("Libro modificado con exito");
+        } catch (SQLException e) {
+            System.out.println("Error al modificar el Libro");
+        }
     }
-
 
 }

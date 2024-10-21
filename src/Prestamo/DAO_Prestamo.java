@@ -61,6 +61,7 @@ public class DAO_Prestamo {
         }
     }
 
+    //Revisar
     public void modificarPrestamo(Integer id, Integer opcion, String nuevoValor) {
         String del = "";
         try (PreparedStatement ps = conexion.prepareStatement(del)) {
