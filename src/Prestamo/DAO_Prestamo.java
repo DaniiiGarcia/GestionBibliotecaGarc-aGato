@@ -49,6 +49,18 @@ public class DAO_Prestamo {
         }
     }
 
+    public void eliminarPrestamo(Integer id) {
+        String del = "DELETE FROM Prestamo WHERE id = ?";
+
+        try (PreparedStatement ps = conexion.prepareStatement(del)) {
+            ps.setInt(1, id);
+            ps.execute();
+            System.out.println("Prestamo eliminado con exito");
+        } catch (SQLException e) {
+            System.out.println("Error al borrar el prestamo");
+        }
+    }
+
     public void modificarPrestamo(Integer id, Integer opcion, String nuevoValor) {
         String del = "";
         try (PreparedStatement ps = conexion.prepareStatement(del)) {
@@ -56,11 +68,13 @@ public class DAO_Prestamo {
                 case 1:
                     //CAMBIAR LA FECHA DE INICIO
                     del = "DELETE FROM Prestamo WHERE fechaInicio = ?";
+                    //PONER FORMATO PARA FECHAS!
                     ps.setString(1, nuevoValor);
                     break;
                 case 2:
                     //CAMBIAR LA FECHA DE FIN
                     del = "DELETE FROM Prestamo WHERE fechaFin = ?";
+                    //PONER FORMATO PARA FECHAS!
                     ps.setString(1, nuevoValor);
                     break;
                 case 3:
