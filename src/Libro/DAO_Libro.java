@@ -41,7 +41,6 @@ public class DAO_Libro {
 
         try (PreparedStatement ps = conexion.prepareStatement(add)) {
 
-            System.out.println("Introduzca un nombre");
             ps.setString(1, titulo);
             ps.setString(2, ISBN);
             ps.executeUpdate();
