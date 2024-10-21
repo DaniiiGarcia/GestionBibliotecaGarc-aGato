@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DAO_Usuario {
-    JDBC conexion = new JDBC();
+    Connection conexion;
 
-    public DAO_Usuario() throws SQLException {
-
+    public DAO_Usuario(JDBC jdbc) {
+    this.conexion = jdbc.getConnection();
     }
 
 

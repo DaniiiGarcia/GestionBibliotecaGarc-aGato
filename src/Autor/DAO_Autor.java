@@ -9,10 +9,11 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class DAO_Autor {
-    JDBC conexion = new JDBC();
+    Connection conexion;
 
 
-    public DAO_Autor() throws SQLException {
+    public DAO_Autor(JDBC jdbc) throws SQLException {
+        this.conexion = jdbc.getConnection();
         //PARA INSERTAR LOS DATOS PREDEFINIDOS
         //insertarDatos();
     }
@@ -28,7 +29,7 @@ public class DAO_Autor {
                     ('Julio Cortázar');
                 """;
 
-        try (Statement s = conexion.getConnection().createStatement()) {
+        try (Statement s = conexion.createStatement()) {
             s.executeUpdate(insert);
             System.out.println("Tabla Autor creada con exito");
 
@@ -40,7 +41,7 @@ public class DAO_Autor {
     public void addAutor(Integer id, String Nombre) {
         String add = "INSERT INTO Autor values(?,?)";
 
-        try (PreparedStatement ps = conexion.getConnection().prepareStatement(add)) {
+        try (PreparedStatement ps = conexion.prepareStatement(add)) {
 
             System.out.println("Introduzca un nombre");
             ps.setInt(1, id);
