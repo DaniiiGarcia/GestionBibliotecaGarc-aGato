@@ -59,7 +59,7 @@ public class DAO_Usuario {
         }
     }
 
-    public void modificarUsuario(Integer id, Integer opcion, String nombre) {
+    public void modificarUsuario(Integer id, String nombre) {
         String mod = "UPDATE Usuario SET nombre = ? WHERE id = ?";
         try (PreparedStatement ps = conexion.prepareStatement(mod)) {
             ps.setString(1, nombre);

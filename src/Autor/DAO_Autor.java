@@ -64,7 +64,7 @@ public class DAO_Autor {
     }
 
 
-    public void modificarAutor(Integer id, Integer opcion, String nombre) {
+    public void modificarAutor(Integer id, String nombre) {
         String mod = "UPDATE Autor SET nombre = ? WHERE id = ?";
         try (PreparedStatement ps = conexion.prepareStatement(mod)) {
             ps.setString(1, nombre);
