@@ -9,39 +9,15 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class DAO_Autor {
-
-    private Connection conexion;
-
-    public DAO_Autor(JDBC jdbc) throws SQLException {
-        conexion = jdbc.getConextion();
-       // createAutor();
-        insert();
-        //addAutor(1, "Daniel");
+    JDBC conexion = new JDBC();
 
 
-
+    public DAO_Autor() throws SQLException {
+        //PARA INSERTAR LOS DATOS PREDEFINIDOS
+        //insertarDatos();
     }
 
-    public void createAutor(){
-        String CREATE_AUTOR= """
-                CREATE TABLE IF NOT EXISTS Autor (
-                    id INT PRIMARY KEY AUTO_INCREMENT,
-                    nombre VARCHAR(100) NOT NULL
-                );
-                """;
-
-
-        try (Statement s = conexion.createStatement()){
-
-            s.executeUpdate(CREATE_AUTOR);
-            System.out.println("Tabla Autor creada correctamente");
-
-        } catch (SQLException e) {
-            System.out.println("Error al crear la tabla del usuario");
-        }
-    }
-
-    public void insert(){
+    public void insertarDatos() {
         String insert = """
                 INSERT INTO Autor (nombre)
                 VALUES
@@ -52,7 +28,7 @@ public class DAO_Autor {
                     ('Julio Cortázar');
                 """;
 
-        try (Statement s = conexion.createStatement()){
+        try (Statement s = conexion.getConnection().createStatement()) {
             s.executeUpdate(insert);
             System.out.println("Tabla Autor creada con exito");
 
@@ -61,10 +37,10 @@ public class DAO_Autor {
         }
     }
 
-    public void addAutor(Integer id, String Nombre){
+    public void addAutor(Integer id, String Nombre) {
         String add = "INSERT INTO Autor values(?,?)";
 
-        try (PreparedStatement ps = conexion.prepareStatement(add)){
+        try (PreparedStatement ps = conexion.getConnection().prepareStatement(add)) {
 
             System.out.println("Introduzca un nombre");
             ps.setInt(1, id);

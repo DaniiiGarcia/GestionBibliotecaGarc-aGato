@@ -33,7 +33,7 @@ public class JDBC {
         }
     }
 
-    public Connection getConextion() {
+    public Connection getConnection() {
         return connection;
     }
 
@@ -113,9 +113,9 @@ public class JDBC {
 
         try (Statement s = connection.createStatement()) {
             s.executeUpdate(CREATE_PRESTAMO);
-            System.out.println("Tabla Prestamo creada correctamente");
+            System.out.println("Tabla Tabla_Libro creada correctamente");
         } catch (SQLException e) {
-            System.out.println("Error al crear la tabla del Prestamo");
+            System.out.println("Error al crear la tabla del Tabla_Libro");
         }
     }
 
