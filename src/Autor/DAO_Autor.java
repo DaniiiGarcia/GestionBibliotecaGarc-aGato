@@ -38,7 +38,7 @@ public class DAO_Autor {
         }
     }
 
-    public void añadirAutor(Integer id, String Nombre) {
+    public void addAutor(Integer id, String Nombre) {
         String add = "INSERT INTO Autor values(?,?)";
 
         try (PreparedStatement ps = conexion.prepareStatement(add)) {
