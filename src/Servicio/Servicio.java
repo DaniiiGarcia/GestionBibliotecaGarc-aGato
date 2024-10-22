@@ -218,6 +218,54 @@ public class Servicio {
                     daoUsuario.modificarUsuario(idUsuario, nombreUsuario);
                     cuentaAtras(3);
                     break;
+                case "13":
+                    saltoLinea();
+                    pedirDato("id", "Prestamo");//Pedimos id del prestamo
+                    daoPrestamo.verLista();
+                    Integer idPrestamo = sc.nextInt();
+                    saltoLinea();
+                    pedirDato("Fecha de Inicio", "Prestamo");//Pedimo fecha de inicio
+                    String fechaInicio = sc.next();
+                    pedirDato("Fecha de Final", "Prestamo");//Pedimos fecha final
+                    String fechaFinal = sc.next();
+                    pedirDato("ID de Usuario", "Prestamo");//Pedimos id del usuario
+                    daoUsuario.verLista();
+                    Integer usuarioId = sc.nextInt();
+                    pedirDato("ID del Libro", "Prestamo");//Pedimos id del libro
+                    daoLibro.verLista();
+                    Integer libroId = sc.nextInt();
+                    saltoLinea();
+                    daoPrestamo.addPrestamo(idPrestamo,fechaInicio,fechaFinal,usuarioId,libroId);//Creamos el prestamo
+                    cuentaAtras(3);
+                    break;
+                case "14":
+                    saltoLinea();
+                    daoPrestamo.verLista();
+                    cuentaAtras(5);
+                    break;
+                case "15":
+                    saltoLinea();
+                    daoPrestamo.verLista();
+                    cuentaAtras(3);
+                    saltoLinea();
+                    pedirDato("id", "Prestamo");
+                    Integer idPrestamo2 = sc.nextInt();
+                    saltoLinea();
+                    daoPrestamo.eliminarPrestamo(idPrestamo2);
+                    cuentaAtras(5);
+                    break;
+                case "16":
+                    saltoLinea();
+                    pedirDato("id", "Prestamo");
+                    Integer idPrestamo3 = sc.nextInt(); //Pedimos el id del prestamo
+                    saltoLinea();
+                    Integer opcionUpdate = pedirOpcion(); //Pedimos en un método aparte la opción que desea actualizar
+                    System.out.println("Inserte el nuevo valor a actualizar");//Pedimos el valor a actualizar
+                    String valorNuevo = sc.next();
+                    saltoLinea();
+                    daoPrestamo.modificarPrestamo(idPrestamo3,opcionUpdate,valorNuevo);
+                    cuentaAtras(3);
+                    break;
                 case "X":
                 case "x":
                     saltoLinea();
@@ -229,6 +277,19 @@ public class Servicio {
                     break;
             }
         } while (opcion != "X");
+    }
+
+    private int pedirOpcion() {
+        int opcion = 0;
+        String menuActualizar= """
+                ¿Qué desea actualizar?
+                  1. Fecha de Inicio del Préstamo
+                  2. Fecha de Finalización del Préstamo
+                  3. Id del usuario del Préstamo
+                  4. Id del Libro en Préstamo
+                """ ;
+        opcion = sc.nextInt();
+        return opcion;
     }
 
     public void pedirDato(String opcion1, String opcion2) {

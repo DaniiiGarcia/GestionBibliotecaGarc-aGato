@@ -126,4 +126,10 @@ public class DAO_Prestamo {
         }
         return prestamos;
     }
+
+    public void verLista(){
+        for (DTO_Prestamo prestamo: readAll()) {
+            System.out.println(prestamo);
+        }
+    }
 }
