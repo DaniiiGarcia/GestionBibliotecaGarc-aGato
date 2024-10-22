@@ -1,12 +1,11 @@
 package Libro;
 
+
 import BBDD.JDBC;
-import Prestamo.DTO_Prestamo;
-import Servicio.Servicio;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class DAO_Libro {
     Connection conexion;
@@ -46,6 +45,20 @@ public class DAO_Libro {
             ps.setInt(1, id);
             ps.setString(2, titulo);
             ps.setString(3, ISBN);
+            ps.executeUpdate();
+            System.out.println("Libro creado con exito");
+
+        } catch (SQLException e) {
+            System.out.println("Error al crear el Libro");
+        }
+    }
+
+    public void addLibro(String titulo, String ISBN) {
+        String add = "INSERT INTO Libro(titulo, isbn) values(?,?)";
+
+        try (PreparedStatement ps = conexion.prepareStatement(add)) {
+            ps.setString(1, titulo);
+            ps.setString(2, ISBN);
             ps.executeUpdate();
             System.out.println("Libro creado con exito");
 
@@ -112,6 +125,16 @@ public class DAO_Libro {
             System.out.println("Error al recoger los datos");
         }
         return libros;
+    }
+
+    public void verLista() {
+        String mensaje = "LIBROS";
+        int longitudBarra = 15;
+        System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
+        System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
+        for (DTO_Libro libro : readAll()) {
+            System.out.println(libro);
+        }
     }
 
 }

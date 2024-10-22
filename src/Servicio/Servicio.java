@@ -69,19 +69,25 @@ public class Servicio {
             System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
             System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
             System.out.println();
+
+
             System.out.printf("%-35s", letraColores.GREEN + "1. Crear autor" + letraColores.RESET);
-            System.out.printf("%-32s", letraColores.GREEN + "6. Crear alumno" + letraColores.RESET);
-            System.out.println(letraColores.GREEN + "10. Matricular alumno" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.GREEN + "5. Crear libro" + letraColores.RESET);
+            System.out.println(letraColores.GREEN + "9. Crear prestamo" + letraColores.RESET);
+
             System.out.printf("%-35s", letraColores.ORANGE + "2. Ver autores" + letraColores.RESET);
-            System.out.printf("%-32s", letraColores.ORANGE + "7. Ver alumnos" + letraColores.RESET);
-            System.out.println(letraColores.ORANGE + "11. Ver matriculas" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.ORANGE + "6. Ver libros" + letraColores.RESET);
+            System.out.println(letraColores.ORANGE + "10. Ver prestamos" + letraColores.RESET);
+
             System.out.printf("%-35s", letraColores.RED + "3. Eliminar autor" + letraColores.RESET);
-            System.out.printf("%-32s", letraColores.RED + "8. Eliminar alumno" + letraColores.RESET);
-            System.out.println(letraColores.RED + "12. Eliminar matricula" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.RED + "7. Eliminar libro" + letraColores.RESET);
+            System.out.println(letraColores.RED + "11. Eliminar prestamo" + letraColores.RESET);
+
+
             System.out.printf("%-35s", letraColores.PURPLE + "4. Actualizar autor" + letraColores.RESET);
-            System.out.println(letraColores.PURPLE + "9. Actualizar alumno" + letraColores.RESET);
-            System.out.printf("%-35s", letraColores.YELLOW + "5. Ordenar asignaturas" + letraColores.RESET);
-            System.out.println(letraColores.YELLOW + "0. Ordenar alumnos" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.PURPLE + "8. Actualizar libro" + letraColores.RESET);
+            System.out.println(letraColores.PURPLE + "12. Actualizar prestamo" + letraColores.RESET);
+
             System.out.println();
             mensaje = "X -> SALIR";
             longitudBarra = 30;
@@ -131,16 +137,41 @@ public class Servicio {
                     cuentaAtras(3);
                     break;
                 case "5":
-                    System.out.println("Hola");
+                    saltoLinea();
+                    pedirDato("titulo", "libro");
+                    String titulo = sc.next();
+                    saltoLinea();
+                    pedirDato("isbn", "libro");
+                    String isbn = sc.next();
+                    saltoLinea();
+                    daoLibro.addLibro(titulo, isbn);
+                    cuentaAtras(3);
                     break;
                 case "6":
-                    System.out.println("Hola");
+                    saltoLinea();
+                    daoLibro.verLista();
+                    cuentaAtras(5);
                     break;
                 case "7":
-                    System.out.println("Hola");
+                    saltoLinea();
+                    daoLibro.verLista();
+                    cuentaAtras(3);
+                    saltoLinea();
+                    pedirDato("id", "libro");
+                    Integer id1 = sc.nextInt();
+                    saltoLinea();
+                    daoLibro.eliminarLibro(id1);
+                    cuentaAtras(5);
                     break;
                 case "8":
-                    System.out.println("Hola");
+                    saltoLinea();
+                    pedirDato("id", "libro");
+                    Integer idLibro = sc.nextInt();
+                    saltoLinea();
+                    //ACABAR HACER SWITCH CON OPCIONES
+                    saltoLinea();
+                    daoAutor.modificarAutor(idAutor, nombreAutor);
+                    cuentaAtras(3);
                     break;
                 case "X":
                 case "x":
