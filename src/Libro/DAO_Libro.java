@@ -73,16 +73,16 @@ public class DAO_Libro {
         try (PreparedStatement ps = conexion.prepareStatement(mod)) {
             switch (opcion) {
                 case 1:
-                    //CAMBIAR LA FECHA DE INICIO
+
                     mod = "UPDATE Libro SET titulo = ? WHERE id = ?";
-                    //PONER FORMATO PARA FECHAS!
+
                     ps.setString(1, nuevoValor);
                     ps.setInt(2, id);
                     break;
                 case 2:
-                    //CAMBIAR LA FECHA DE FIN
+
                     mod = "UPDATE Libro SET isbn = ? WHERE id = ?";
-                    //PONER FORMATO PARA FECHAS!
+
                     ps.setString(1, nuevoValor);
                     ps.setInt(2, id);
 
