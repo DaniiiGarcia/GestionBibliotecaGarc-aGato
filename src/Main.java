@@ -18,7 +18,5 @@ public class Main {
 
         Servicio ser = new Servicio(jdbc);
         ser.menu();
-
-
     }
 }
