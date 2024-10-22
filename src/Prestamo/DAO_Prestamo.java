@@ -35,7 +35,6 @@ public class DAO_Prestamo {
 
     public void addPrestamo(Integer id, String fechaInicio, String fechaFin, Integer idUsuario, Integer idLibro) {
         String add = "INSERT INTO Prestamo values(?,?,?,?,?)";
-
         try (PreparedStatement ps = conexion.prepareStatement(add)) {
             ps.setInt(1, id);
             ps.setString(2, fechaInicio);
@@ -46,6 +45,7 @@ public class DAO_Prestamo {
             System.out.println("Prestamo creado con exito");
         } catch (SQLException e) {
             System.out.println("Error al añadir el prestamo");
+            e.printStackTrace();
         }
     }
 
@@ -71,22 +71,26 @@ public class DAO_Prestamo {
                     update = "UPDATE Prestamo SET fechaInicio = ? WHERE id = ?";
                     //PONER FORMATO PARA FECHAS!
                     ps.setString(1, nuevoValor);
+                    ps.setInt(2, id);
                     break;
                 case 2:
                     //CAMBIAR LA FECHA DE FIN
                     update = "UPDATE Prestamo SET fechaFin = ? WHERE id = ?";
                     //PONER FORMATO PARA FECHAS!
                     ps.setString(1, nuevoValor);
+                    ps.setInt(2, id);
                     break;
                 case 3:
                     //CAMBIAR EL USUARIO ID
                     update = "UPDATE Prestamo SET usuarioId = ? WHERE id = ?";
                     ps.setString(1, nuevoValor);
+                    ps.setInt(2, id);
                     break;
                 case 4:
                     //CAMBIAR EL LIBRO ID
                     update = "UPDATE Prestamo SET libroId = ? WHERE id = ?";
                     ps.setString(1, nuevoValor);
+                    ps.setInt(2, id);
                     break;
             }
             ps.executeUpdate();
