@@ -2,6 +2,7 @@ package Usuario;
 
 import Autor.DTO_Autor;
 import BBDD.JDBC;
+import Libro.DTO_Libro;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -48,6 +49,18 @@ public class DAO_Usuario {
         }
     }
 
+    public void addUsuario(String Nombre) {
+        String add = "INSERT INTO Usuario(nombre) values(?)";
+
+        try (PreparedStatement ps = conexion.prepareStatement(add)) {
+            ps.setString(1, Nombre);
+            ps.executeUpdate();
+            System.out.println("Usuario creado con exito");
+        } catch (SQLException e) {
+            System.out.println("Error al añadir el Usuario");
+        }
+    }
+
     public void eliminarUsuario(Integer id) {
         String del = "DELETE FROM Usuario WHERE id = ?";
 
@@ -64,6 +77,7 @@ public class DAO_Usuario {
         String mod = "UPDATE Usuario SET nombre = ? WHERE id = ?";
         try (PreparedStatement ps = conexion.prepareStatement(mod)) {
             ps.setString(1, nombre);
+            ps.setInt(2, id);
             ps.execute();
             System.out.println("Usuario modificado con exito");
         } catch (SQLException e) {
@@ -92,5 +106,15 @@ public class DAO_Usuario {
             System.out.println("Error al recoger los datos");
         }
         return usuarios;
+    }
+
+    public void verLista() {
+        String mensaje = "USUARIOS";
+        int longitudBarra = 15;
+        System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
+        System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
+        for (DTO_Usuario usuario : readAll()) {
+            System.out.println(usuario);
+        }
     }
 }

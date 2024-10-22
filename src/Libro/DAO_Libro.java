@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class DAO_Libro {
     Connection conexion;
     ArrayList<DTO_Libro> libros;
+
     public DAO_Libro(JDBC jdbc) throws SQLException {
         this.conexion = jdbc.getConnection();
         this.libros = new ArrayList<>();
@@ -80,22 +81,19 @@ public class DAO_Libro {
     }
 
 
-    //Revisar
     public void modificarLibro(Integer id, Integer opcion, String nuevoValor) {
         String mod = "";
-        try (PreparedStatement ps = conexion.prepareStatement(mod)) {
-            switch (opcion) {
-                case 1:
-                    mod = "UPDATE Libro SET titulo = ? WHERE id = ?";
-                    ps.setString(1, nuevoValor);
-                    ps.setInt(2, id);
-                    break;
-                case 2:
-                    mod = "UPDATE Libro SET isbn = ? WHERE id = ?";
-                    ps.setString(1, nuevoValor);
-                    ps.setInt(2, id);
-                    break;
-           }
+        switch (opcion) {
+            case 1:
+                mod = "UPDATE Libro SET titulo = ? WHERE id = ?;";
+                break;
+            case 2:
+                mod = "UPDATE Libro SET isbn = ? WHERE id = ?;";
+                break;
+        }
+        try (PreparedStatement ps = conexion.prepareStatement(mod);){
+            ps.setString(1, nuevoValor);
+            ps.setInt(2, id);
             ps.executeUpdate();
             System.out.println("Libro modificado con exito");
         } catch (SQLException e) {
@@ -103,22 +101,22 @@ public class DAO_Libro {
         }
     }
 
-    public ArrayList<DTO_Libro> readAll(){
+    public ArrayList<DTO_Libro> readAll() {
         String readAll = "Select * from Libro";
         libros.clear();
-        try(PreparedStatement ps = conexion.prepareStatement(readAll)){
+        try (PreparedStatement ps = conexion.prepareStatement(readAll)) {
 
             ps.executeQuery();
 
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt(1);
                 String titulo = rs.getString(2);
                 String isbn = rs.getString(3);
 
 
-                libros.add(new DTO_Libro(id,titulo,isbn));
+                libros.add(new DTO_Libro(id, titulo, isbn));
             }
 
         } catch (SQLException e) {

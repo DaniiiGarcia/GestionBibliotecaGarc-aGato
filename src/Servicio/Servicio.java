@@ -73,20 +73,24 @@ public class Servicio {
 
             System.out.printf("%-35s", letraColores.GREEN + "1. Crear autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.GREEN + "5. Crear libro" + letraColores.RESET);
-            System.out.println(letraColores.GREEN + "9. Crear prestamo" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.GREEN + "9. Crear usuario" + letraColores.RESET);
+            System.out.println(letraColores.GREEN + "13. Crear prestamo" + letraColores.RESET);
 
             System.out.printf("%-35s", letraColores.ORANGE + "2. Ver autores" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.ORANGE + "6. Ver libros" + letraColores.RESET);
-            System.out.println(letraColores.ORANGE + "10. Ver prestamos" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.ORANGE + "10. Ver usuarios" + letraColores.RESET);
+            System.out.println(letraColores.ORANGE + "14. Ver prestamos" + letraColores.RESET);
 
             System.out.printf("%-35s", letraColores.RED + "3. Eliminar autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.RED + "7. Eliminar libro" + letraColores.RESET);
-            System.out.println(letraColores.RED + "11. Eliminar prestamo" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.RED + "11. Eliminar usuario" + letraColores.RESET);
+            System.out.println(letraColores.RED + "15. Eliminar prestamo" + letraColores.RESET);
 
 
             System.out.printf("%-35s", letraColores.PURPLE + "4. Actualizar autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.PURPLE + "8. Actualizar libro" + letraColores.RESET);
-            System.out.println(letraColores.PURPLE + "12. Actualizar prestamo" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.PURPLE + "12. Actualizar usuario" + letraColores.RESET);
+            System.out.println(letraColores.PURPLE + "16. Actualizar prestamo" + letraColores.RESET);
 
             System.out.println();
             mensaje = "X -> SALIR";
@@ -99,7 +103,7 @@ public class Servicio {
             System.out.println();
             System.out.println();
 
-            switch (opcion){
+            switch (opcion) {
                 case "1":
                     saltoLinea();
                     pedirDato("nombre", "autor");
@@ -168,9 +172,50 @@ public class Servicio {
                     pedirDato("id", "libro");
                     Integer idLibro = sc.nextInt();
                     saltoLinea();
-                    //ACABAR HACER SWITCH CON OPCIONES
+                    System.out.println("Elije una opción: ");
+                    System.out.println("1. Titulo");
+                    System.out.println("2. ISBN");
+                    Integer opcion1 = sc.nextInt();
                     saltoLinea();
-                    daoAutor.modificarAutor(idAutor, nombreAutor);
+                    System.out.println("Introduce el nuevo valor");
+                    String nuevoValor = sc.next();
+                    saltoLinea();
+                    daoLibro.modificarLibro(idLibro, opcion1, nuevoValor);
+                    cuentaAtras(3);
+                    break;
+                case "9":
+                    saltoLinea();
+                    pedirDato("nombre", "usuario");
+                    String nombre1 = sc.next();
+                    saltoLinea();
+                    daoUsuario.addUsuario(nombre1);
+                    cuentaAtras(3);
+                    break;
+                case "10":
+                    saltoLinea();
+                    daoUsuario.verLista();
+                    cuentaAtras(5);
+                    break;
+                case "11":
+                    saltoLinea();
+                    daoUsuario.verLista();
+                    cuentaAtras(3);
+                    saltoLinea();
+                    pedirDato("id", "usuario");
+                    Integer id2 = sc.nextInt();
+                    saltoLinea();
+                    daoUsuario.eliminarUsuario(id2);
+                    cuentaAtras(5);
+                    break;
+                case "12":
+                    saltoLinea();
+                    pedirDato("id", "usuario");
+                    Integer idUsuario = sc.nextInt();
+                    saltoLinea();
+                    pedirDato("nombre", "autor");
+                    String nombreUsuario = sc.next();
+                    saltoLinea();
+                    daoUsuario.modificarUsuario(idUsuario, nombreUsuario);
                     cuentaAtras(3);
                     break;
                 case "X":
@@ -186,7 +231,7 @@ public class Servicio {
         } while (opcion != "X");
     }
 
-    public void pedirDato(String opcion1, String opcion2){
+    public void pedirDato(String opcion1, String opcion2) {
         System.out.println("Introduce el " + opcion1 + " de un " + opcion2);
     }
 }
