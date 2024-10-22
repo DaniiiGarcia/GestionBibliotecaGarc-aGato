@@ -2,16 +2,18 @@ package Prestamo;
 
 import BBDD.JDBC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class DAO_Prestamo {
     Connection conexion;
+    ArrayList<DTO_Prestamo> prestamos;
+
 
     public DAO_Prestamo(JDBC jdbc) {
         this.conexion = jdbc.getConnection();
+        this.prestamos = new ArrayList<>();
     }
 
     public void insertarDatos() {
@@ -94,5 +96,30 @@ public class DAO_Prestamo {
         } catch (SQLException e) {
             System.out.println("Error al modificar el prestamo");
         }
+    }
+
+    public ArrayList<DTO_Prestamo> readAll(){
+        String readAll = "Select * from Prestamo";
+         prestamos.clear();
+        try(PreparedStatement ps = conexion.prepareStatement(readAll)){
+
+            ps.executeQuery();
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt(1);
+                String fechaInicio = rs.getString(2);
+                String fechaFin = rs.getString(3);
+                int idU = rs.getInt(4);
+                int idL = rs.getInt(5);
+
+                prestamos.add(new DTO_Prestamo(id,fechaInicio, fechaFin, idU, idL));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al recoger los datos");
+        }
+        return prestamos;
     }
 }

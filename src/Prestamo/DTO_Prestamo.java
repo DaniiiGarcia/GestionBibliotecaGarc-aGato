@@ -4,10 +4,10 @@ public class DTO_Prestamo {
     private Integer id;
     private String fechaInicio;
     private String fechaFin;
-    private String usuarioId;
-    private String libroId;
+    private int usuarioId;
+    private int libroId;
 
-    public DTO_Prestamo(Integer id, String fechaInicio, String fechaFin, String usuarioId, String libroId) {
+    public DTO_Prestamo(Integer id, String fechaInicio, String fechaFin, int usuarioId, int libroId) {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -15,7 +15,7 @@ public class DTO_Prestamo {
         this.libroId = libroId;
     }
 
-    public DTO_Prestamo(String fechaInicio, String fechaFin, String usuarioId, String libroId) {
+    public DTO_Prestamo(String fechaInicio, String fechaFin, int usuarioId, int libroId) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.usuarioId = usuarioId;
@@ -46,19 +46,19 @@ public class DTO_Prestamo {
         this.fechaFin = fechaFin;
     }
 
-    public String getUsuarioId() {
+    public int getUsuarioId() {
         return usuarioId;
     }
 
-    public void setUsuarioId(String usuarioId) {
+    public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
 
-    public String getLibroId() {
+    public int getLibroId() {
         return libroId;
     }
 
-    public void setLibroId(String libroId) {
+    public void setLibroId(int libroId) {
         this.libroId = libroId;
     }
 
