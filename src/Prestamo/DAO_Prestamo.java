@@ -62,29 +62,29 @@ public class DAO_Prestamo {
     }
 
     public void modificarPrestamo(Integer id, Integer opcion, String nuevoValor) {
-        String del = "";
-        try (PreparedStatement ps = conexion.prepareStatement(del)) {
+        String update = "";
+        try (PreparedStatement ps = conexion.prepareStatement(update)) {
             switch (opcion) {
                 case 1:
                     //CAMBIAR LA FECHA DE INICIO
-                    del = "DELETE FROM Prestamo WHERE fechaInicio = ?";
+                    update = "UPDATE Prestamo SET fechaInicio = ? WHERE id = ?";
                     //PONER FORMATO PARA FECHAS!
                     ps.setString(1, nuevoValor);
                     break;
                 case 2:
                     //CAMBIAR LA FECHA DE FIN
-                    del = "DELETE FROM Prestamo WHERE fechaFin = ?";
+                    update = "UPDATE Prestamo SET fechaFin = ? WHERE id = ?";
                     //PONER FORMATO PARA FECHAS!
                     ps.setString(1, nuevoValor);
                     break;
                 case 3:
                     //CAMBIAR EL USUARIO ID
-                    del = "DELETE FROM Prestamo WHERE usuarioid = ?";
+                    update = "UPDATE Prestamo SET usuarioId = ? WHERE id = ?";
                     ps.setString(1, nuevoValor);
                     break;
                 case 4:
                     //CAMBIAR EL LIBRO ID
-                    del = "DELETE FROM Prestamo WHERE libroid = ?";
+                    update = "UPDATE Prestamo SET libroId = ? WHERE id = ?";
                     ps.setString(1, nuevoValor);
                     break;
             }
