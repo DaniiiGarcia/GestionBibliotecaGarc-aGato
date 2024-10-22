@@ -79,7 +79,6 @@ public class DAO_Libro {
                     ps.setInt(2, id);
                     break;
                 case 2:
-
                     mod = "UPDATE Libro SET isbn = ? WHERE id = ?";
 
                     ps.setString(1, nuevoValor);
