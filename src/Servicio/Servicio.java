@@ -69,7 +69,7 @@ public class Servicio {
             System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
             System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
             System.out.println();
-            System.out.printf("%-35s", letraColores.GREEN + "1. Crear asignatura" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.GREEN + "1. Crear autor" + letraColores.RESET);
             System.out.printf("%-32s", letraColores.GREEN + "6. Crear alumno" + letraColores.RESET);
             System.out.println(letraColores.GREEN + "10. Matricular alumno" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.ORANGE + "2. Ver asignaturas" + letraColores.RESET);
@@ -95,11 +95,13 @@ public class Servicio {
 
             switch (opcion){
                 case "1":
+                    saltoLinea();
                     System.out.println("Introduce el nombre de un autor");
                     String nombre = sc.next();
+                    saltoLinea();
                     daoAutor.addAutor(nombre);
                     daoAutor.readAll();
-                    daoAutor.verLista();
+                    cuentaAtras(3);
                     break;
                 case "2":
                     System.out.println("Hola");

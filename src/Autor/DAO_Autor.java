@@ -88,7 +88,7 @@ public class DAO_Autor {
         }
     }
 
-    public ArrayList<DTO_Autor> readAll(){
+    public void readAll(){
         String readAll = "Select * from Autor";
         autores.clear();
         try(PreparedStatement ps = conexion.prepareStatement(readAll)){
@@ -108,7 +108,6 @@ public class DAO_Autor {
         } catch (SQLException e) {
             System.out.println("Error al recoger los datos");
         }
-        return autores;
     }
 
     public void verLista(){
@@ -116,6 +115,8 @@ public class DAO_Autor {
             System.out.println(autor);
         }
     }
+
+
 }
 
 
