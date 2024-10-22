@@ -73,7 +73,6 @@ public class DAO_Libro {
         try (PreparedStatement ps = conexion.prepareStatement(mod)) {
             switch (opcion) {
                 case 1:
-
                     mod = "UPDATE Libro SET titulo = ? WHERE id = ?";
 
                     ps.setString(1, nuevoValor);
