@@ -57,10 +57,22 @@ public class DTO_Libro {
 
     @Override
     public String toString() {
-        return "DTO_Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", ISBN='" + ISBN + '\'' +
-                '}';
+
+        return String.format(
+                """
+    +-----------+------------------------+-------------------+
+    |    ID     |         Título         |       ISBN        |
+    +-----------+------------------------+-------------------+
+    |  %-9s| %-22s | %-17s |
+    +-----------+------------------------+-------------------+
+    """,
+                this.id,
+                this.titulo,
+                this.ISBN);
+    }
+
+    public static void main(String[] args) {
+        DTO_Libro l = new DTO_Libro(1, "dfgh","ertyyu");
+        System.out.println(l);
     }
 }
