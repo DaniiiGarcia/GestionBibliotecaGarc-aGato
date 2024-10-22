@@ -1,21 +1,22 @@
 package Autor;
 
 import BBDD.JDBC;
+import Libro.DTO_Libro;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 
 public class DAO_Autor {
     Connection conexion;
+    ArrayList<DTO_Autor> autores;
 
 
     public DAO_Autor(JDBC jdbc) throws SQLException {
         this.conexion = jdbc.getConnection();
         //PARA INSERTAR LOS DATOS PREDEFINIDOS
         //insertarDatos();
+        this.autores = new ArrayList<>();
     }
 
     public void insertarDatos() {
@@ -73,6 +74,29 @@ public class DAO_Autor {
         } catch (SQLException e) {
             System.out.println("Error al modificar el autor");
         }
+    }
+
+    public ArrayList<DTO_Autor> readAll(){
+        String readAll = "Select * from Autor";
+        autores.clear();
+        try(PreparedStatement ps = conexion.prepareStatement(readAll)){
+
+            ps.executeQuery();
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt(1);
+                String nombre = rs.getString(2);
+
+
+                autores.add(new DTO_Autor(id,nombre));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al recoger los datos");
+        }
+        return autores;
     }
 }
 

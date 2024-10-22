@@ -1,17 +1,18 @@
 package Usuario;
 
+import Autor.DTO_Autor;
 import BBDD.JDBC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DAO_Usuario {
     Connection conexion;
+    ArrayList<DTO_Usuario> usuarios;
 
     public DAO_Usuario(JDBC jdbc) {
         this.conexion = jdbc.getConnection();
+        this.usuarios = new ArrayList<>();
     }
 
     public void insertarDatos() {
@@ -68,5 +69,28 @@ public class DAO_Usuario {
         } catch (SQLException e) {
             System.out.println("Error al modificar el usuario");
         }
+    }
+
+    public ArrayList<DTO_Usuario> readAll(){
+        String readAll = "Select * from Usuario";
+        usuarios.clear();
+        try(PreparedStatement ps = conexion.prepareStatement(readAll)){
+
+            ps.executeQuery();
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt(1);
+                String nombre = rs.getString(2);
+
+
+                usuarios.add(new DTO_Usuario(id,nombre));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al recoger los datos");
+        }
+        return usuarios;
     }
 }

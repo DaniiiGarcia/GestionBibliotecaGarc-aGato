@@ -1,19 +1,19 @@
 package Libro;
 
 import BBDD.JDBC;
+import Prestamo.DTO_Prestamo;
 import Servicio.Servicio;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DAO_Libro {
     Connection conexion;
-
+    ArrayList<DTO_Libro> libros;
     public DAO_Libro(JDBC jdbc) throws SQLException {
         this.conexion = jdbc.getConnection();
+        this.libros = new ArrayList<>();
         //PARA INSERTAR LOS DATOS PREDEFINIDOS
         //insertarDatos();
     }
@@ -88,6 +88,30 @@ public class DAO_Libro {
         } catch (SQLException e) {
             System.out.println("Error al modificar el Libro");
         }
+    }
+
+    public ArrayList<DTO_Libro> readAll(){
+        String readAll = "Select * from Libro";
+        libros.clear();
+        try(PreparedStatement ps = conexion.prepareStatement(readAll)){
+
+            ps.executeQuery();
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                int id = rs.getInt(1);
+                String titulo = rs.getString(2);
+                String isbn = rs.getString(3);
+
+
+                libros.add(new DTO_Libro(id,titulo,isbn));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al recoger los datos");
+        }
+        return libros;
     }
 
 }
