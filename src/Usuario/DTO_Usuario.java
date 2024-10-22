@@ -28,4 +28,24 @@ public class DTO_Usuario {
     public void setNombre(String nombre) {
         Nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                """
+                +-----------+------------------------+
+                |    ID     |         Nombre         | 
+                +-----------+------------------------+ 
+                |  %-9s| %-22s | 
+                +-----------+------------------------+
+                """,
+                this.id,
+                this.Nombre
+                );
+    }
+
+    public static void main(String[] args) {
+        DTO_Usuario u = new DTO_Usuario(1, "Daniel");
+        System.out.println(u);
+    }
 }

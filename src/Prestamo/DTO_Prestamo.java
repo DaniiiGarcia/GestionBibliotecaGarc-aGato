@@ -65,11 +65,23 @@ public class DTO_Prestamo {
     @Override
     public String toString() {
         return String.format(
-                "id=%s, fechaInicio=%s, fechaFin=%s, usuarioId=%s, libroId=%s]",
-                this.id,
-                this.fechaInicio,
-                this.fechaFin,
-                this.usuarioId,
-                this.libroId);
+                """
+              +-----------+------------------------+------------------------+------------------------+-------------------+
+              |    ID     |      Fecha Inicio      |        Fecha Fin       |       Usuario ID       |      Libro ID     |
+              +-----------+------------------------+------------------------+------------------------+-------------------+
+              |  %-9s| %-22s | %-22s | %-22s | %-17s |
+              +-----------+------------------------+------------------------+------------------------+-------------------+
+              """,
+        this.id,
+        this.fechaInicio,
+        this.fechaFin,
+        this.usuarioId,
+        this.libroId);
     }
+
+    public static void main(String[] args) {
+        DTO_Prestamo d = new DTO_Prestamo( "21-02-02","21-02-02", 1,12 );
+        System.out.println(d);
+    }
+
 }

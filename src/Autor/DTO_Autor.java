@@ -1,5 +1,6 @@
 package Autor;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class DTO_Autor{
@@ -43,10 +44,21 @@ public class DTO_Autor{
 
     @Override
     public String toString() {
-        return "DTO_Autor{" +
-                "id=" + id +
-                ", Nombre='" + Nombre + '\'' +
-                '}';
+        return String.format(
+                """
+                +-----------+------------------------+
+                |    ID     |         Nombre         |
+                +-----------+------------------------+
+                |  %-9s| %-22s |
+                +-----------+------------------------+
+                """,
+                this.id,
+                this.Nombre);
+    }
+
+    public static void main(String[] args) {
+        DTO_Autor auor = new DTO_Autor(1, "sedfhujkdcfbj ");
+        System.out.println(auor);
     }
 
 }
