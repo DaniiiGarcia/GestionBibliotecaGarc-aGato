@@ -85,7 +85,7 @@ public class DAO_Libro {
                     ps.setInt(2, id);
                     break;
 
-            }
+           }
             ps.executeUpdate();
             System.out.println("Libro modificado con exito");
         } catch (SQLException e) {
