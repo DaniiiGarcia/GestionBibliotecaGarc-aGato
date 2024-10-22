@@ -72,13 +72,13 @@ public class Servicio {
             System.out.printf("%-35s", letraColores.GREEN + "1. Crear autor" + letraColores.RESET);
             System.out.printf("%-32s", letraColores.GREEN + "6. Crear alumno" + letraColores.RESET);
             System.out.println(letraColores.GREEN + "10. Matricular alumno" + letraColores.RESET);
-            System.out.printf("%-35s", letraColores.ORANGE + "2. Ver asignaturas" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.ORANGE + "2. Ver autores" + letraColores.RESET);
             System.out.printf("%-32s", letraColores.ORANGE + "7. Ver alumnos" + letraColores.RESET);
             System.out.println(letraColores.ORANGE + "11. Ver matriculas" + letraColores.RESET);
-            System.out.printf("%-35s", letraColores.RED + "3. Eliminar asignatura" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.RED + "3. Eliminar autor" + letraColores.RESET);
             System.out.printf("%-32s", letraColores.RED + "8. Eliminar alumno" + letraColores.RESET);
             System.out.println(letraColores.RED + "12. Eliminar matricula" + letraColores.RESET);
-            System.out.printf("%-35s", letraColores.PURPLE + "4. Actualizar asignatura" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.PURPLE + "4. Actualizar autor" + letraColores.RESET);
             System.out.println(letraColores.PURPLE + "9. Actualizar alumno" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.YELLOW + "5. Ordenar asignaturas" + letraColores.RESET);
             System.out.println(letraColores.YELLOW + "0. Ordenar alumnos" + letraColores.RESET);
@@ -96,7 +96,7 @@ public class Servicio {
             switch (opcion){
                 case "1":
                     saltoLinea();
-                    System.out.println("Introduce el nombre de un autor");
+                    pedirDato("nombre", "autor");
                     String nombre = sc.next();
                     saltoLinea();
                     daoAutor.addAutor(nombre);
@@ -104,13 +104,31 @@ public class Servicio {
                     cuentaAtras(3);
                     break;
                 case "2":
-                    System.out.println("Hola");
+                    saltoLinea();
+                    daoAutor.verLista();
+                    cuentaAtras(5);
                     break;
                 case "3":
-                    System.out.println("Hola");
+                    saltoLinea();
+                    daoAutor.verLista();
+                    cuentaAtras(3);
+                    saltoLinea();
+                    pedirDato("id", "autor");
+                    Integer id = sc.nextInt();
+                    saltoLinea();
+                    daoAutor.eliminarAutor(id);
+                    cuentaAtras(5);
                     break;
                 case "4":
-                    System.out.println("Hola");
+                    saltoLinea();
+                    pedirDato("id", "autor");
+                    Integer idAutor = sc.nextInt();
+                    saltoLinea();
+                    pedirDato("nombre", "autor");
+                    String nombreAutor = sc.next();
+                    saltoLinea();
+                    daoAutor.modificarAutor(idAutor, nombreAutor);
+                    cuentaAtras(3);
                     break;
                 case "5":
                     System.out.println("Hola");
@@ -135,5 +153,9 @@ public class Servicio {
                     break;
             }
         } while (opcion != "X");
+    }
+
+    public void pedirDato(String opcion1, String opcion2){
+        System.out.println("Introduce el " + opcion1 + " de un " + opcion2);
     }
 }

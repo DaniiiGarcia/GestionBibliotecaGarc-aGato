@@ -81,6 +81,7 @@ public class DAO_Autor {
         String mod = "UPDATE Autor SET nombre = ? WHERE id = ?";
         try (PreparedStatement ps = conexion.prepareStatement(mod)) {
             ps.setString(1, nombre);
+            ps.setInt(2, id);
             ps.execute();
             System.out.println("Autor modificado con exito");
         } catch (SQLException e) {
@@ -88,35 +89,38 @@ public class DAO_Autor {
         }
     }
 
-    public void readAll(){
+    public ArrayList<DTO_Autor> readAll() {
         String readAll = "Select * from Autor";
         autores.clear();
-        try(PreparedStatement ps = conexion.prepareStatement(readAll)){
+        try (PreparedStatement ps = conexion.prepareStatement(readAll)) {
 
             ps.executeQuery();
 
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt(1);
                 String nombre = rs.getString(2);
 
 
-                autores.add(new DTO_Autor(id,nombre));
+                autores.add(new DTO_Autor(id, nombre));
             }
 
         } catch (SQLException e) {
             System.out.println("Error al recoger los datos");
         }
+        return autores;
     }
 
-    public void verLista(){
-        for(DTO_Autor autor : autores){
+    public void verLista() {
+        String mensaje = "AUTORES";
+        int longitudBarra = 15;
+        System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
+        System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
+        for (DTO_Autor autor : readAll()) {
             System.out.println(autor);
         }
     }
-
-
 }
 
 
