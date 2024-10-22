@@ -85,7 +85,6 @@ public class DAO_Libro {
 
                     ps.setString(1, nuevoValor);
                     ps.setInt(2, id);
-
                     break;
 
             }
