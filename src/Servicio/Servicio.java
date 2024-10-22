@@ -235,7 +235,7 @@ public class Servicio {
                     daoLibro.verLista();
                     Integer libroId = sc.nextInt();
                     saltoLinea();
-                    daoPrestamo.addPrestamo(idPrestamo,fechaInicio,fechaFinal,usuarioId,libroId);//Creamos el prestamo
+                    daoPrestamo.addPrestamo(idPrestamo,fechaInicio,fechaFinal,usuarioId,libroId);// Creamos el prestamo
                     cuentaAtras(3);
                     break;
                 case "14":
