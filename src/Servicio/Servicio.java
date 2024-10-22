@@ -1,11 +1,30 @@
 package Servicio;
 
+import Autor.DAO_Autor;
+import BBDD.JDBC;
+import Libro.DAO_Libro;
+import Prestamo.DAO_Prestamo;
+import Usuario.DAO_Usuario;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Servicio {
 
     ConsoleColors letraColores = new ConsoleColors();
     Scanner sc = new Scanner(System.in);
+    DAO_Autor daoAutor;
+    DAO_Usuario daoUsuario;
+    DAO_Prestamo daoPrestamo;
+    DAO_Libro daoLibro;
+
+    public Servicio(JDBC jdbc) throws SQLException {
+        daoAutor = new DAO_Autor(jdbc);
+        daoUsuario = new DAO_Usuario(jdbc);
+        daoPrestamo = new DAO_Prestamo(jdbc);
+        daoLibro = new DAO_Libro(jdbc);
+    }
 
     public void cuentaAtras(Integer segundos) {
         try {
@@ -76,7 +95,11 @@ public class Servicio {
 
             switch (opcion){
                 case "1":
-                    System.out.println("Hola");
+                    System.out.println("Introduce el nombre de un autor");
+                    String nombre = sc.next();
+                    daoAutor.addAutor(nombre);
+                    daoAutor.readAll();
+                    daoAutor.verLista();
                     break;
                 case "2":
                     System.out.println("Hola");

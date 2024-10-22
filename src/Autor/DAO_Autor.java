@@ -39,6 +39,18 @@ public class DAO_Autor {
         }
     }
 
+    public void addAutor(String Nombre) {
+        String add = "INSERT INTO Autor (nombre) values (?)";
+
+        try (PreparedStatement ps = conexion.prepareStatement(add)) {
+            ps.setString(1, Nombre);
+            ps.executeUpdate();
+            System.out.println("Autor creado con exito");
+        } catch (SQLException e) {
+            System.out.println("Error al añadir el Autor");
+        }
+    }
+
     public void addAutor(Integer id, String Nombre) {
         String add = "INSERT INTO Autor values(?,?)";
 
@@ -97,6 +109,12 @@ public class DAO_Autor {
             System.out.println("Error al recoger los datos");
         }
         return autores;
+    }
+
+    public void verLista(){
+        for(DTO_Autor autor : autores){
+            System.out.println(autor);
+        }
     }
 }
 

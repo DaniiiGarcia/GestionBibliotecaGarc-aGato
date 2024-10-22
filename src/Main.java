@@ -16,7 +16,7 @@ public class Main {
         DAO_Libro daoLibro = new DAO_Libro(jdbc);
         DAO_Prestamo daoPrestamo = new DAO_Prestamo(jdbc);
 
-        Servicio ser = new Servicio();
+        Servicio ser = new Servicio(jdbc);
         ser.menu();
 
 
