@@ -8,7 +8,7 @@ public class DTO_Usuario {
         Nombre = nombre;
     }
 
-    public DTO_Usuario(Integer id,String nombre) {
+    public DTO_Usuario(Integer id, String nombre) {
         this.id = id;
         Nombre = nombre;
     }
@@ -31,21 +31,12 @@ public class DTO_Usuario {
 
     @Override
     public String toString() {
-        return String.format(
-                """
-                +-----------+------------------------+
-                |    ID     |         Nombre         | 
-                +-----------+------------------------+ 
-                |  %-9s| %-22s | 
-                +-----------+------------------------+
-                """,
+        return String.format("""
+                        %s, %s
+                        """,
                 this.id,
                 this.Nombre
-                );
+        );
     }
 
-    public static void main(String[] args) {
-        DTO_Usuario u = new DTO_Usuario(1, "Daniel");
-        System.out.println(u);
-    }
 }
