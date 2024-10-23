@@ -3,6 +3,8 @@ package Usuario;
 public class DTO_Usuario {
     private Integer id;
     private String Nombre;
+    private static int cont = 0;
+
 
     public DTO_Usuario(String nombre) {
         Nombre = nombre;
@@ -31,12 +33,25 @@ public class DTO_Usuario {
 
     @Override
     public String toString() {
+        if (cont == 0) {
+            System.out.println("+-----------+------------------------+");
+            System.out.println("|    ID     |         Nombre         |");
+            System.out.println("+-----------+------------------------+");
+        }
+        cont ++;
         return String.format("""
-                        %s, %s
-                        """,
+                |  %-9s| %-22s |
+                +-----------+------------------------+""",
                 this.id,
                 this.Nombre
         );
+    }
+
+    public static void main(String[] args) {
+        DTO_Usuario u1 = new DTO_Usuario(1, "Nombre");
+        DTO_Usuario u2 = new DTO_Usuario(2, "oiuytdrfnmkloji");
+        System.out.println(u1);
+        System.out.println(u2);
     }
 
 }
