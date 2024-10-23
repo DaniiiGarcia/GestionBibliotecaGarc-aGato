@@ -128,6 +128,10 @@ public class DAO_Prestamo {
     }
 
     public void verLista(){
+        String mensaje = "PRESTAMOS";
+        int longitudBarra = 15;
+        System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
+        System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
         for (DTO_Prestamo prestamo: readAll()) {
             System.out.println(prestamo);
         }

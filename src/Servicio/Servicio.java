@@ -25,6 +25,7 @@ public class Servicio {
         daoUsuario = new DAO_Usuario(jdbc);
         daoPrestamo = new DAO_Prestamo(jdbc);
         daoLibro = new DAO_Libro(jdbc);
+        daoLibroAutor = new DAO_LibroAutor(jdbc);
     }
 
     public void cuentaAtras(Integer segundos) {

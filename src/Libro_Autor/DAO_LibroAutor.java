@@ -112,6 +112,10 @@ public class DAO_LibroAutor {
     }
 
     public void verLista() {
+        String mensaje = "LIBROS-AUTORES";
+        int longitudBarra = 15;
+        System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
+        System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
         for (DTO_LibroAutor la : readAll()) {
             System.out.println(la);
         }
