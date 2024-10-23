@@ -89,16 +89,16 @@ public class DAO_LibroAutor {
         }
     }
 
-    public ArrayList<DTO_LibroAutor> readAll(){
+    public ArrayList<DTO_LibroAutor> readAll() {
         String select = "Select * from Libro_Autor";
-        try (PreparedStatement ps = conexion.prepareStatement(select)){
+        try (PreparedStatement ps = conexion.prepareStatement(select)) {
 
             ps.executeQuery();
 
             ResultSet rs = ps.executeQuery();
             Integer idLibro;
             Integer idAutor;
-            while (rs.next()){
+            while (rs.next()) {
                 idLibro = rs.getInt(1);
                 idAutor = rs.getInt(2);
 
@@ -111,8 +111,8 @@ public class DAO_LibroAutor {
         return libroAutor;
     }
 
-    public void mostrarLista(){
-        for (DTO_LibroAutor la:readAll()) {
+    public void verLista() {
+        for (DTO_LibroAutor la : readAll()) {
             System.out.println(la);
         }
     }

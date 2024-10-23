@@ -3,6 +3,7 @@ package Servicio;
 import Autor.DAO_Autor;
 import BBDD.JDBC;
 import Libro.DAO_Libro;
+import Libro_Autor.DAO_LibroAutor;
 import Prestamo.DAO_Prestamo;
 import Usuario.DAO_Usuario;
 
@@ -17,6 +18,7 @@ public class Servicio {
     DAO_Usuario daoUsuario;
     DAO_Prestamo daoPrestamo;
     DAO_Libro daoLibro;
+    DAO_LibroAutor daoLibroAutor;
 
     public Servicio(JDBC jdbc) throws SQLException {
         daoAutor = new DAO_Autor(jdbc);
@@ -73,26 +75,26 @@ public class Servicio {
             System.out.printf("%-35s", letraColores.GREEN + "1. Crear autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.GREEN + "5. Crear libro" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.GREEN + "9. Crear usuario" + letraColores.RESET);
-            System.out.printf("%-35s",letraColores.GREEN + "13. Crear prestamo" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.GREEN + "13. Crear prestamo" + letraColores.RESET);
             System.out.println(letraColores.GREEN + "17. Crear asignación Libro-Autor" + letraColores.RESET);
 
             System.out.printf("%-35s", letraColores.ORANGE + "2. Ver autores" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.ORANGE + "6. Ver libros" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.ORANGE + "10. Ver usuarios" + letraColores.RESET);
-            System.out.printf("%-35s",letraColores.ORANGE + "14. Ver prestamos" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.ORANGE + "14. Ver prestamos" + letraColores.RESET);
             System.out.println(letraColores.ORANGE + "18. Ver asignaciones" + letraColores.RESET);
 
             System.out.printf("%-35s", letraColores.RED + "3. Eliminar autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.RED + "7. Eliminar libro" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.RED + "11. Eliminar usuario" + letraColores.RESET);
-            System.out.printf("%-35s",letraColores.RED + "15. Eliminar prestamo" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.RED + "15. Eliminar prestamo" + letraColores.RESET);
             System.out.println(letraColores.RED + "19. Eliminar asignacion" + letraColores.RESET);
 
 
             System.out.printf("%-35s", letraColores.PURPLE + "4. Actualizar autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.PURPLE + "8. Actualizar libro" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.PURPLE + "12. Actualizar usuario" + letraColores.RESET);
-            System.out.printf("%-35s",letraColores.PURPLE + "16. Actualizar prestamo" + letraColores.RESET);
+            System.out.printf("%-35s", letraColores.PURPLE + "16. Actualizar prestamo" + letraColores.RESET);
             System.out.println(letraColores.PURPLE + "20. Actualizar asignación" + letraColores.RESET);
 
 
@@ -260,7 +262,7 @@ public class Servicio {
                     daoLibro.verLista();
                     Integer libroId = sc.nextInt();
                     saltoLinea();
-                    daoPrestamo.addPrestamo(idPrestamo,fechaInicio,fechaFinal,usuarioId,libroId);// Creamos el prestamo
+                    daoPrestamo.addPrestamo(idPrestamo, fechaInicio, fechaFinal, usuarioId, libroId);// Creamos el prestamo
                     bucleTecla();
                     break;
                 case "14":
@@ -294,7 +296,58 @@ public class Servicio {
                     System.out.println("Inserte el nuevo valor a actualizar");//Pedimos el valor a actualizar
                     String valorNuevo = sc.next();
                     saltoLinea();
-                    daoPrestamo.modificarPrestamo(idPrestamo3,opcionUpdate,valorNuevo);
+                    daoPrestamo.modificarPrestamo(idPrestamo3, opcionUpdate, valorNuevo);
+                    bucleTecla();
+                    break;
+                case "17":
+                    //CREAR ASIGNACIÓN
+                    saltoLinea();
+                    daoLibro.verLista();
+                    pedirDato("id", "Libro");
+                    Integer idLibro2 = sc.nextInt();
+                    saltoLinea();
+                    daoAutor.verLista();
+                    pedirDato("id", "Autor");
+                    Integer idAutor2 = sc.nextInt();
+                    saltoLinea();
+                    daoLibroAutor.addLibro_Autor(idLibro2, idAutor2);
+                    bucleTecla();
+                    break;
+                case "18":
+                    saltoLinea();
+                    daoLibroAutor.verLista();
+                    bucleTecla();
+                    break;
+                case "19":
+                    //ELIMINAR ASIGNACIONES
+                    saltoLinea();
+                    daoLibroAutor.verLista();
+                    bucleTecla();
+                    saltoLinea();
+                    //NO UTILIZO EL METODO PORQUE NO CONCUERDA EL TEXTO
+                    System.out.println("Introduce el id de una asignación");
+                    Integer idAsig = sc.nextInt();
+                    saltoLinea();
+                    daoLibroAutor.eliminarLibro_Autor(idAsig);
+                    bucleTecla();
+                    break;
+                case "20":
+                    //MODIFICAR PRESTAMO
+                    saltoLinea();
+                    daoLibroAutor.verLista();
+                    bucleTecla();
+                    saltoLinea();
+                    System.out.println("Introduce el id de una asignación");
+                    Integer idAsignacion = sc.nextInt();
+                    saltoLinea();
+                    System.out.println("Qué quieres cambiar: ");
+                    System.out.println("1.ID del Autor");
+                    System.out.println("2.ID del Libro");
+                    Integer opcion2 = sc.nextInt();
+                    saltoLinea();
+                    System.out.println("Introduce el nuevo valor: ");
+                    String valorNuevo2 = sc.next();
+                    daoLibroAutor.modificarLibro_Autor(idAsignacion, opcion2, valorNuevo2);
                     bucleTecla();
                     break;
                 case "X":
@@ -312,13 +365,13 @@ public class Servicio {
 
     private int pedirOpcion() {
         int opcion = 0;
-        String menuActualizar= """
+        String menuActualizar = """
                 ¿Qué desea actualizar?
                   1. Fecha de Inicio del Préstamo
                   2. Fecha de Finalización del Préstamo
                   3. Id del usuario del Préstamo
                   4. Id del Libro en Préstamo
-                """ ;
+                """;
         opcion = sc.nextInt();
         return opcion;
     }
@@ -337,8 +390,8 @@ public class Servicio {
         return false;
     }
 
-    public void bucleTecla(){
-        while(!presionarEnter()){
+    public void bucleTecla() {
+        while (!presionarEnter()) {
         }
     }
 }
