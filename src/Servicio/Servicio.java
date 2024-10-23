@@ -6,7 +6,6 @@ import Libro.DAO_Libro;
 import Prestamo.DAO_Prestamo;
 import Usuario.DAO_Usuario;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -104,6 +103,7 @@ public class Servicio {
             System.out.println();
 
             switch (opcion) {
+                //CREAR AUTOR
                 case "1":
                     saltoLinea();
                     pedirDato("nombre", "autor");
@@ -114,11 +114,13 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "2":
+                    //VER AUTORES
                     saltoLinea();
                     daoAutor.verLista();
                     bucleTecla();
                     break;
                 case "3":
+                    //ELIMINAR AUTOR
                     saltoLinea();
                     daoAutor.verLista();
                     bucleTecla();
@@ -130,7 +132,10 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "4":
+                    //MODIFICAR AUTOR
                     saltoLinea();
+                    daoAutor.verLista();
+                    bucleTecla();
                     pedirDato("id", "autor");
                     Integer idAutor = sc.nextInt();
                     saltoLinea();
@@ -141,6 +146,7 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "5":
+                    //CREAR LIBRO
                     saltoLinea();
                     pedirDato("titulo", "libro");
                     String titulo = sc.next();
@@ -152,11 +158,13 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "6":
+                    //VER LIBROS
                     saltoLinea();
                     daoLibro.verLista();
                     bucleTecla();
                     break;
                 case "7":
+                    //ELIMINAR LIBROS
                     saltoLinea();
                     daoLibro.verLista();
                     bucleTecla();
@@ -168,6 +176,10 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "8":
+                    //MODIFICAR LIBRO
+                    saltoLinea();
+                    daoLibro.verLista();
+                    bucleTecla();
                     saltoLinea();
                     pedirDato("id", "libro");
                     Integer idLibro = sc.nextInt();
@@ -184,6 +196,7 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "9":
+                    //CREAR USUARIO
                     saltoLinea();
                     pedirDato("nombre", "usuario");
                     String nombre1 = sc.next();
@@ -192,11 +205,13 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "10":
+                    //VER USUARIOS
                     saltoLinea();
                     daoUsuario.verLista();
                     bucleTecla();
                     break;
                 case "11":
+                    //ELIMINAR USUARIOS
                     saltoLinea();
                     daoUsuario.verLista();
                     bucleTecla();
@@ -208,6 +223,10 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "12":
+                    //MODIFICAR USUARIO
+                    saltoLinea();
+                    daoUsuario.verLista();
+                    bucleTecla();
                     saltoLinea();
                     pedirDato("id", "usuario");
                     Integer idUsuario = sc.nextInt();
@@ -219,8 +238,9 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "13":
+                    //CREAR PRESTAMO
                     saltoLinea();
-                    pedirDato("id", "Prestamo");//Pedimos id del prestamo
+                    pedirDato("id", "Prestamo");
                     daoPrestamo.verLista();
                     Integer idPrestamo = sc.nextInt();
                     saltoLinea();
@@ -239,11 +259,13 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "14":
+                    //VER PRESTAMOS
                     saltoLinea();
                     daoPrestamo.verLista();
                     bucleTecla();
                     break;
                 case "15":
+                    //ELIMINAR PRESTAMOS
                     saltoLinea();
                     daoPrestamo.verLista();
                     bucleTecla();
@@ -255,6 +277,10 @@ public class Servicio {
                     bucleTecla();
                     break;
                 case "16":
+                    //MODIFICAR PRESTAMO
+                    saltoLinea();
+                    daoPrestamo.verLista();
+                    bucleTecla();
                     saltoLinea();
                     pedirDato("id", "Prestamo");
                     Integer idPrestamo3 = sc.nextInt(); //Pedimos el id del prestamo
