@@ -11,10 +11,6 @@ public class DAO_LibroAutor {
 
     ArrayList<DTO_LibroAutor> libroAutor = new ArrayList<>();
 
-    public ArrayList<DTO_LibroAutor> getListaLibroAutor() {
-        return libroAutor;
-    }
-
     public DAO_LibroAutor(JDBC jdbc) {
         this.conexion = jdbc.getConnection();
     }
