@@ -111,23 +111,23 @@ public class Servicio {
                     saltoLinea();
                     daoAutor.addAutor(nombre);
                     daoAutor.readAll();
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "2":
                     saltoLinea();
                     daoAutor.verLista();
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "3":
                     saltoLinea();
                     daoAutor.verLista();
-                    cuentaAtras(3);
+                    bucleTecla();
                     saltoLinea();
                     pedirDato("id", "autor");
                     Integer id = sc.nextInt();
                     saltoLinea();
                     daoAutor.eliminarAutor(id);
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "4":
                     saltoLinea();
@@ -138,7 +138,7 @@ public class Servicio {
                     String nombreAutor = sc.next();
                     saltoLinea();
                     daoAutor.modificarAutor(idAutor, nombreAutor);
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "5":
                     saltoLinea();
@@ -149,23 +149,23 @@ public class Servicio {
                     String isbn = sc.next();
                     saltoLinea();
                     daoLibro.addLibro(titulo, isbn);
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "6":
                     saltoLinea();
                     daoLibro.verLista();
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "7":
                     saltoLinea();
                     daoLibro.verLista();
-                    cuentaAtras(3);
+                    bucleTecla();
                     saltoLinea();
                     pedirDato("id", "libro");
                     Integer id1 = sc.nextInt();
                     saltoLinea();
                     daoLibro.eliminarLibro(id1);
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "8":
                     saltoLinea();
@@ -181,7 +181,7 @@ public class Servicio {
                     String nuevoValor = sc.next();
                     saltoLinea();
                     daoLibro.modificarLibro(idLibro, opcion1, nuevoValor);
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "9":
                     saltoLinea();
@@ -189,23 +189,23 @@ public class Servicio {
                     String nombre1 = sc.next();
                     saltoLinea();
                     daoUsuario.addUsuario(nombre1);
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "10":
                     saltoLinea();
                     daoUsuario.verLista();
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "11":
                     saltoLinea();
                     daoUsuario.verLista();
-                    cuentaAtras(3);
+                    bucleTecla();
                     saltoLinea();
                     pedirDato("id", "usuario");
                     Integer id2 = sc.nextInt();
                     saltoLinea();
                     daoUsuario.eliminarUsuario(id2);
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "12":
                     saltoLinea();
@@ -216,7 +216,7 @@ public class Servicio {
                     String nombreUsuario = sc.next();
                     saltoLinea();
                     daoUsuario.modificarUsuario(idUsuario, nombreUsuario);
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "13":
                     saltoLinea();
@@ -236,23 +236,23 @@ public class Servicio {
                     Integer libroId = sc.nextInt();
                     saltoLinea();
                     daoPrestamo.addPrestamo(idPrestamo,fechaInicio,fechaFinal,usuarioId,libroId);// Creamos el prestamo
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "14":
                     saltoLinea();
                     daoPrestamo.verLista();
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "15":
                     saltoLinea();
                     daoPrestamo.verLista();
-                    cuentaAtras(3);
+                    bucleTecla();
                     saltoLinea();
                     pedirDato("id", "Prestamo");
                     Integer idPrestamo2 = sc.nextInt();
                     saltoLinea();
                     daoPrestamo.eliminarPrestamo(idPrestamo2);
-                    cuentaAtras(5);
+                    bucleTecla();
                     break;
                 case "16":
                     saltoLinea();
@@ -264,7 +264,7 @@ public class Servicio {
                     String valorNuevo = sc.next();
                     saltoLinea();
                     daoPrestamo.modificarPrestamo(idPrestamo3,opcionUpdate,valorNuevo);
-                    cuentaAtras(3);
+                    bucleTecla();
                     break;
                 case "X":
                 case "x":
@@ -294,5 +294,20 @@ public class Servicio {
 
     public void pedirDato(String opcion1, String opcion2) {
         System.out.println("Introduce el " + opcion1 + " de un " + opcion2);
+    }
+
+    public Boolean presionarEnter() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Presiona \"Enter\" para continuar...");
+        String resultado = sc.nextLine();
+        if (resultado.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
+    public void bucleTecla(){
+        while(!presionarEnter()){
+        }
     }
 }
