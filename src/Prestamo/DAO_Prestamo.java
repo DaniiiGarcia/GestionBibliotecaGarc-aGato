@@ -132,6 +132,9 @@ public class DAO_Prestamo {
         int longitudBarra = 15;
         System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
         System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
+        System.out.println("+-----------+------------------------+------------------------+------------------------+-------------------+");
+        System.out.println("|    ID     |      Fecha Inicio      |        Fecha Fin       |       Usuario ID       |      Libro ID     |");
+        System.out.println("+-----------+------------------------+------------------------+------------------------+-------------------+");
         for (DTO_Prestamo prestamo: readAll()) {
             System.out.println(prestamo);
         }

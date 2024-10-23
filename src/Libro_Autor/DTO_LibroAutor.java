@@ -47,13 +47,6 @@ public class DTO_LibroAutor {
 
     @Override
     public String toString() {
-
-        if (cont == 0) {
-            System.out.println("+-----------+------------------------+");
-            System.out.println("|    ID Libro    |     ID Autor      |");
-            System.out.println("+-----------+------------------------+");
-        }
-        cont ++;
         return String.format("""
                 |  %-14s| %-17s |
                 +-----------+------------------------+""",

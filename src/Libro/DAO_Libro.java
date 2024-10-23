@@ -130,6 +130,9 @@ public class DAO_Libro {
         int longitudBarra = 15;
         System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
         System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
+        System.out.println("+-----------+------------------------+-------------------+");
+        System.out.println("|    ID     |         Título         |       ISBN        |");
+        System.out.println("+-----------+------------------------+-------------------+");
         for (DTO_Libro libro : readAll()) {
             System.out.println(libro);
         }

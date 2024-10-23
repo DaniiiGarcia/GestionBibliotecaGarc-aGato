@@ -113,6 +113,9 @@ public class DAO_Usuario {
         int longitudBarra = 15;
         System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
         System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
+        System.out.println("+-----------+------------------------+");
+        System.out.println("|    ID     |         Nombre         |");
+        System.out.println("+-----------+------------------------+");
         for (DTO_Usuario usuario : readAll()) {
             System.out.println(usuario);
         }

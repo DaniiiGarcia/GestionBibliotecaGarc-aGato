@@ -112,6 +112,9 @@ public class DAO_LibroAutor {
         int longitudBarra = 15;
         System.out.println("╔" + "═".repeat(longitudBarra) + " " + mensaje + " " + "═".repeat(longitudBarra) + "╗");
         System.out.println("╚" + "═".repeat(2 * longitudBarra + mensaje.length() + 2) + "╝");
+        System.out.println("+-----------+------------------------+");
+        System.out.println("|    ID Libro    |     ID Autor      |");
+        System.out.println("+-----------+------------------------+");
         for (DTO_LibroAutor la : readAll()) {
             System.out.println(la);
         }

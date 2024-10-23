@@ -58,13 +58,6 @@ public class DTO_Libro {
 
     @Override
     public String toString() {
-
-        if (cont == 0) {
-            System.out.println("+-----------+------------------------+-------------------+");
-            System.out.println("|    ID     |         Título         |       ISBN        |");
-            System.out.println("+-----------+------------------------+-------------------+");
-        }
-        cont++;
         return String.format("""
     |  %-9s| %-22s | %-17s |
     +-----------+------------------------+-------------------+""",
