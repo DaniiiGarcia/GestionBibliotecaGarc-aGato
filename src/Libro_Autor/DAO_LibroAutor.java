@@ -12,11 +12,11 @@ import java.util.ArrayList;
 public class DAO_LibroAutor {
     Connection conexion;
 
+    ArrayList<DAO_LibroAutor> libroAutor;
+
     public ArrayList<DAO_LibroAutor> getLibroAutor() {
         return libroAutor;
     }
-
-    ArrayList<DAO_LibroAutor> libroAutor;
 
     public DAO_LibroAutor(JDBC jdbc) {
         this.conexion = jdbc.getConnection();

@@ -71,6 +71,5 @@ public class DTO_LibroAutor {
         System.out.println(libroAutor1);
         System.out.println(libroAutor2);
     }
-
  */
 }
