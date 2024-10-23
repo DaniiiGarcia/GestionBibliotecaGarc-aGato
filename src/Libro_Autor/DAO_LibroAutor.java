@@ -1,15 +1,22 @@
 package Libro_Autor;
 
-import Autor.DAO_Autor;
 import BBDD.JDBC;
+import Usuario.DTO_Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DAO_LibroAutor {
     Connection conexion;
+
+    public ArrayList<DAO_LibroAutor> getLibroAutor() {
+        return libroAutor;
+    }
+
+    ArrayList<DAO_LibroAutor> libroAutor;
 
     public DAO_LibroAutor(JDBC jdbc) {
         this.conexion = jdbc.getConnection();
@@ -43,9 +50,9 @@ public class DAO_LibroAutor {
             ps.setInt(1, idLibro);
             ps.setInt(2, idAutor);
             ps.executeUpdate();
-            System.out.println("Libro_Autor creado con exito");
+            System.out.println("Se ha asignado el libro al autor correctamente");
         } catch (SQLException e) {
-            System.out.println("Error al añadir el Libro_Autor");
+            System.out.println("Error al asignar el libro al autor");
         }
     }
 
@@ -55,9 +62,9 @@ public class DAO_LibroAutor {
         try (PreparedStatement ps = conexion.prepareStatement(del)) {
             ps.setInt(1, id);
             ps.execute();
-            System.out.println("Libro_Autor eliminado con exito");
+            System.out.println("Asignación eliminada con exito");
         } catch (SQLException e) {
-            System.out.println("Error al borrar el Libro_Autor");
+            System.out.println("Error al borrar la asignación");
         }
     }
 
@@ -79,9 +86,9 @@ public class DAO_LibroAutor {
                     break;
             }
             ps.executeUpdate();
-            System.out.println("Libro_Autor modificado con exito");
+            System.out.println("Asignación modificada con exito");
         } catch (SQLException e) {
-            System.out.println("Error al modificar el Libro_Autor");
+            System.out.println("Error al modificar la asignación");
         }
     }
 }
