@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DAO_LibroAutor {
     Connection conexion;
 
-    ArrayList<DTO_LibroAutor> libroAutor;
+    ArrayList<DTO_LibroAutor> libroAutor = new ArrayList<>();
 
     public ArrayList<DTO_LibroAutor> getListaLibroAutor() {
         return libroAutor;
