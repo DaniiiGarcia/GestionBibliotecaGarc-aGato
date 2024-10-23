@@ -135,4 +135,7 @@ public class DAO_Libro {
         }
     }
 
+    public ArrayList<DTO_Libro> getLibros() {
+        return libros;
+    }
 }
