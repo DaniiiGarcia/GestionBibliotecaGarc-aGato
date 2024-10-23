@@ -3,18 +3,15 @@ package Libro_Autor;
 import BBDD.JDBC;
 import Usuario.DTO_Usuario;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DAO_LibroAutor {
     Connection conexion;
 
-    ArrayList<DAO_LibroAutor> libroAutor;
+    ArrayList<DTO_LibroAutor> libroAutor;
 
-    public ArrayList<DAO_LibroAutor> getLibroAutor() {
+    public ArrayList<DTO_LibroAutor> getListaLibroAutor() {
         return libroAutor;
     }
 
@@ -89,6 +86,34 @@ public class DAO_LibroAutor {
             System.out.println("Asignación modificada con exito");
         } catch (SQLException e) {
             System.out.println("Error al modificar la asignación");
+        }
+    }
+
+    public ArrayList<DTO_LibroAutor> readAll(){
+        String select = "Select * from Libro_Autor";
+        try (PreparedStatement ps = conexion.prepareStatement(select)){
+
+            ps.executeQuery();
+
+            ResultSet rs = ps.executeQuery();
+            Integer idLibro;
+            Integer idAutor;
+            while (rs.next()){
+                idLibro = rs.getInt(1);
+                idAutor = rs.getInt(2);
+
+                libroAutor.add(new DTO_LibroAutor(idLibro, idAutor));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return libroAutor;
+    }
+
+    public void mostrarLista(){
+        for (DTO_LibroAutor la:readAll()) {
+            System.out.println(la);
         }
     }
 }
