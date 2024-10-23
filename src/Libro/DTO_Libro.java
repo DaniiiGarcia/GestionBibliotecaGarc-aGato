@@ -6,6 +6,7 @@ public class DTO_Libro {
     private Integer id;
     private String titulo;
     private String ISBN;
+    private static int cont = 0;
 
     public DTO_Libro(Integer id, String titulo, String ISBN) {
         this.id = id;
@@ -58,14 +59,15 @@ public class DTO_Libro {
     @Override
     public String toString() {
 
-        return String.format(
-                """
-    +-----------+------------------------+-------------------+
-    |    ID     |         Título         |       ISBN        |
-    +-----------+------------------------+-------------------+
+        if (cont == 0) {
+            System.out.println("+-----------+------------------------+-------------------+");
+            System.out.println("|    ID     |         Título         |       ISBN        |");
+            System.out.println("+-----------+------------------------+-------------------+");
+        }
+        cont++;
+        return String.format("""
     |  %-9s| %-22s | %-17s |
-    +-----------+------------------------+-------------------+
-    """,
+    +-----------+------------------------+-------------------+""",
                 this.id,
                 this.titulo,
                 this.ISBN);
@@ -73,6 +75,9 @@ public class DTO_Libro {
 
     public static void main(String[] args) {
         DTO_Libro l = new DTO_Libro(1, "dfgh","ertyyu");
+        DTO_Libro li = new DTO_Libro(1, "wertyuioiuyt","ertyyu");
+
         System.out.println(l);
+        System.out.println(li);
     }
 }

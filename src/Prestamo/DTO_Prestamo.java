@@ -6,6 +6,7 @@ public class DTO_Prestamo {
     private String fechaFin;
     private int usuarioId;
     private int libroId;
+    private static int cont = 0;
 
     public DTO_Prestamo(Integer id, String fechaInicio, String fechaFin, int usuarioId, int libroId) {
         this.id = id;
@@ -64,14 +65,16 @@ public class DTO_Prestamo {
 
     @Override
     public String toString() {
-        return String.format(
-                """
-              +-----------+------------------------+------------------------+------------------------+-------------------+
-              |    ID     |      Fecha Inicio      |        Fecha Fin       |       Usuario ID       |      Libro ID     |
-              +-----------+------------------------+------------------------+------------------------+-------------------+
+        if (cont == 0) {
+            System.out.println("+-----------+------------------------+------------------------+------------------------+-------------------+");
+            System.out.println("|    ID     |      Fecha Inicio      |        Fecha Fin       |       Usuario ID       |      Libro ID     |");
+            System.out.println("+-----------+------------------------+------------------------+------------------------+-------------------+");
+        }
+        cont++;
+
+        return String.format("""
               |  %-9s| %-22s | %-22s | %-22s | %-17s |
-              +-----------+------------------------+------------------------+------------------------+-------------------+
-              """,
+              +-----------+------------------------+------------------------+------------------------+-------------------+""",
         this.id,
         this.fechaInicio,
         this.fechaFin,
@@ -81,7 +84,11 @@ public class DTO_Prestamo {
 
     public static void main(String[] args) {
         DTO_Prestamo d = new DTO_Prestamo( "21-02-02","21-02-02", 1,12 );
+        DTO_Prestamo dd = new DTO_Prestamo( "21-02-02","21-02-02", 1,12 );
+
         System.out.println(d);
+        System.out.println(dd);
+
     }
 
 }
