@@ -9,7 +9,6 @@ import java.util.Objects;
 public class DTO_LibroAutor {
     private Integer idLibro;
     private Integer idAutor;
-    private static int cont = 0;
 
     public DTO_LibroAutor(Integer idLibro, Integer idAutor) {
         this.idLibro = idLibro;

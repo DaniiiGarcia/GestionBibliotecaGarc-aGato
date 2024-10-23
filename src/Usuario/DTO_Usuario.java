@@ -3,8 +3,6 @@ package Usuario;
 public class DTO_Usuario {
     private Integer id;
     private String Nombre;
-    private static int cont = 0;
-
 
     public DTO_Usuario(String nombre) {
         Nombre = nombre;

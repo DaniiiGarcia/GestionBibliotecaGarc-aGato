@@ -6,7 +6,6 @@ public class DTO_Libro {
     private Integer id;
     private String titulo;
     private String ISBN;
-    private static int cont = 0;
 
     public DTO_Libro(Integer id, String titulo, String ISBN) {
         this.id = id;

@@ -6,7 +6,6 @@ public class DTO_Prestamo {
     private String fechaFin;
     private int usuarioId;
     private int libroId;
-    private static int cont = 0;
 
     public DTO_Prestamo(Integer id, String fechaInicio, String fechaFin, int usuarioId, int libroId) {
         this.id = id;
