@@ -73,23 +73,28 @@ public class Servicio {
             System.out.printf("%-35s", letraColores.GREEN + "1. Crear autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.GREEN + "5. Crear libro" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.GREEN + "9. Crear usuario" + letraColores.RESET);
-            System.out.println(letraColores.GREEN + "13. Crear prestamo" + letraColores.RESET);
+            System.out.printf("%-35s",letraColores.GREEN + "13. Crear prestamo" + letraColores.RESET);
+            System.out.println(letraColores.GREEN + "17. Crear asignación Libro-Autor" + letraColores.RESET);
 
             System.out.printf("%-35s", letraColores.ORANGE + "2. Ver autores" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.ORANGE + "6. Ver libros" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.ORANGE + "10. Ver usuarios" + letraColores.RESET);
-            System.out.println(letraColores.ORANGE + "14. Ver prestamos" + letraColores.RESET);
+            System.out.printf("%-35s",letraColores.ORANGE + "14. Ver prestamos" + letraColores.RESET);
+            System.out.println(letraColores.ORANGE + "18. Ver asignaciones" + letraColores.RESET);
 
             System.out.printf("%-35s", letraColores.RED + "3. Eliminar autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.RED + "7. Eliminar libro" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.RED + "11. Eliminar usuario" + letraColores.RESET);
-            System.out.println(letraColores.RED + "15. Eliminar prestamo" + letraColores.RESET);
+            System.out.printf("%-35s",letraColores.RED + "15. Eliminar prestamo" + letraColores.RESET);
+            System.out.println(letraColores.RED + "19. Eliminar asignacion" + letraColores.RESET);
 
 
             System.out.printf("%-35s", letraColores.PURPLE + "4. Actualizar autor" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.PURPLE + "8. Actualizar libro" + letraColores.RESET);
             System.out.printf("%-35s", letraColores.PURPLE + "12. Actualizar usuario" + letraColores.RESET);
-            System.out.println(letraColores.PURPLE + "16. Actualizar prestamo" + letraColores.RESET);
+            System.out.printf("%-35s",letraColores.PURPLE + "16. Actualizar prestamo" + letraColores.RESET);
+            System.out.println(letraColores.PURPLE + "20. Actualizar asignación" + letraColores.RESET);
+
 
             System.out.println();
             mensaje = "X -> SALIR";

@@ -117,4 +117,8 @@ public class DAO_Usuario {
             System.out.println(usuario);
         }
     }
+
+    public ArrayList<DTO_Usuario> getUsuarios() {
+        return usuarios;
+    }
 }
